@@ -1,0 +1,41 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div data-page="proses" class="page ProsesPage no-navbar">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+	<div class="content-block" style="display:block;height:20px"></div>
+     	
+	  <div class="content-block">
+      <h3 id="pro_orderid"></h3>
+	  <p class="pesan">
+	  
+	  </p>	  
+          <div class="row">
+		  <div class="col-33"><a href="#" id="pro_btnreset"class="button button-small button-fill color-green"><i class="material-icons">autorenew</i>Reset</a></div>
+		  <div class="col-33"><a href="#" id="pro_btncall"class="button button-small button-fill color-teal"><i class="material-icons">call</i>Call</a></div>
+		  <div class="col-33"><a href="#" id="pro_btnsms"class="button button-small button-fill color-orange"><i class="material-icons">message</i>Sms</a></div>		  
+		  </div>
+		  <br>
+		  <div class="row">
+		  <div class="col-100">
+		  <a href="#" id="pro_btnpath" class="button button-small button-fill color-blue">Temukan Jalan</a>
+		  </div>
+		  </div>
+		  <br>
+		  <div class="map_canvas" id="map_canvas1" ></div>
+		  <br>
+          <a href="#" class="button button-big button-fill color-red" id="prostatus">Status</a>
+	      <br>
+	      <a href="#" class="button button-big button-fill color-green" id="prolanjut">Next</a>
+		  <br>
+		  <a href="#" class="button button-big button-fill color-orange" id="procancel">Cancel</a>
+      </div>
+	  
+	  
+    </div>	
+  </div>
+</div>

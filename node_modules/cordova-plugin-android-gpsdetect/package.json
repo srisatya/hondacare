@@ -1,0 +1,57 @@
+{
+  "_from": "cordova-plugin-android-gpsdetect",
+  "_id": "cordova-plugin-android-gpsdetect@0.0.3",
+  "_inBundle": false,
+  "_integrity": "sha1-7baovBjbbEkFTDl7AezaOtWfLtA=",
+  "_location": "/cordova-plugin-android-gpsdetect",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-android-gpsdetect",
+    "name": "cordova-plugin-android-gpsdetect",
+    "escapedName": "cordova-plugin-android-gpsdetect",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-android-gpsdetect/-/cordova-plugin-android-gpsdetect-0.0.3.tgz",
+  "_shasum": "edb6a8bc18db6c49054c397b01ecda3ad59f2ed0",
+  "_spec": "cordova-plugin-android-gpsdetect",
+  "_where": "C:\\xampp\\htdocs\\hondacare2",
+  "author": {
+    "name": "Tho Ho"
+  },
+  "bugs": {
+    "url": "https://github.com/thosoft/gpsdetector/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-android-gpsdetect",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Gps Detector Android Plugin from orinial com.butterflyeffect.plugins",
+  "homepage": "https://github.com/thosoft/gpsdetector#readme",
+  "keywords": [
+    "cordova",
+    "gps",
+    "geolocation",
+    "ecosystem:cordova",
+    "cordova-android",
+    "detect"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-android-gpsdetect",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thosoft/gpsdetector.git"
+  },
+  "version": "0.0.3"
+}

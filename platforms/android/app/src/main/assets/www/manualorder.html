@@ -1,0 +1,212 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+
+<div class="pages theme-red">
+  <!-- Page, data-page contains page name-->
+  
+  <div data-page="manualorder" class="page ManualorderPage">
+    <!-- Scrollable page content-->
+	
+    <div class="page-content">
+
+	<div class="content-block" style="display:block;height:10px"></div>
+      
+	 <div class="content-block umum">
+     <div>
+	      <h2>Proses Pemesanan Manual</h2>
+	 </div>
+	 
+      <div class="list-block mstep1">
+					<ul>
+						<li >
+						
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+	<input type="text" name="m_platno" id="m_platno" placeholder="Nomor Polisi/Nama Pengguna/Email *" required />
+	<a href="#" id="btn_platno_hapus"><img src="img/hapus.png" /></a>									
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+      </div>	
+
+	  <div class="list-block mstep2">
+					<ul>
+					<li >
+					Apakah Anda adalah salah satu pengguna di bawah ini? jika ya, mohon pilih yang sesuai!
+						<div class="item-content">								
+							<div class="item-inner">
+								<div class="item-input">
+									<select name="m_userid" id="m_userid">									
+									<option value="none">Tidak ditemukan</option>
+									</select>
+									
+								</div>
+							</div>
+						</div>	
+							
+					</li>
+					<li>
+					<div><a href="#" class="button button-fill color-blue" id="btn_pengguna_baru"> Daftar Baru </a></p>
+					</li>
+					</ul>
+		</div>			
+       <div class="list-block mstep3">
+					<ul>
+						<li>
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="m_username2" id="m_username2" placeholder="Nama Pengguna *"  required maxlength="30"/>
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						
+						<li>
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="password" name="m_password" id="m_password" placeholder="Kata Sandi *" required maxlength="15"/>
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						
+						<li>
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="password" name="m_cpassword" id="m_cpassword" placeholder="Ulang Kata Sandi *" required maxlength="15"/>
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="m_email" id="m_email" placeholder="Email *" maxlength="50" />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="m_mobile" id="m_mobile" placeholder="No Mobile" maxlength="12"/>
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						
+						<li>
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="m_ktp" id="m_ktp" placeholder="No Identitas" maxlength="25"/>
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+						<div class="item-content">								
+							<div class="item-inner">
+								<div class="item-input">
+									<select name="m_gender" id="m_gender">									
+										<option value="male" selected="selected">Pria</option>
+										<option value="female">Wanita</option>
+									</select>
+									
+								</div>
+							</div>
+						</div>	
+							
+					</li>
+						
+						
+						
+					</ul>
+      </div>	
+
+
+		<div class="list-block mstep4">
+					<ul>
+					<li >
+						
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+									<input type="text" name="m_platno2" id="m_platno2" placeholder="Nomor Polisi*" maxlength="10" required />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+					  <li>
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<textarea type="text" name="m_keluhan" id="m_keluhan" placeholder="Keluhan Motor Anda *" ></textarea>
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+					<div class="content-block">
+						<h3>Penggantian Suku Cadang</h3>
+						<div class="card-content ">
+						<table style="width:100%">
+						  <thead class="manual-order-sparepart-head">
+						  <tr>
+							  <th class="label-cell" colspan="4"><a href="#" class="button button-fill color-primary button-small" onClick="app.tambahSP_M()">+ Tambah</a></th>			
+							</tr>
+							<tr style="border-bottom:2px solid silver">
+							  <th class="label-cell">Nama</th>
+								<th class="label-cell"></th> 		  
+							  <th class="label-cell">Harga</th>
+							  <th class="label-cell"></th> 
+							</tr>
+							
+						  </thead>
+						  <tbody class="manual-order-sparepart-body">
+						   
+						  </tbody>
+					   </table>
+						</div>
+						
+	
+				</div>
+		</div>			
+	  
+	  <p><a href="#" class="button button-fill color-green" id="btn_mmanual"> Lanjutkan </a></p>	  
+	   <p>
+	   <div class="row">
+				<div class="col-50">
+				<a href="#" class="button button-fill color-gray" id="btn_mback"> Kembali </a>	
+				</div>
+				<div class="col-50">
+				<a href="#" class="button button-fill color-red" id="btn_mbatal"> Batalkan </a>
+				</div>
+	   </div>
+	   </p>
+	   
+    </div>
+	
+	
+	
+  </div>
+</div>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Honda Care</title>
+    <!-- Path to Framework7 Library CSS-->
+	<!--
+   <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+	-->
+	
+	 
+	<link rel="stylesheet" href="css/framework7.material.min.css" />
+	<link rel="stylesheet" href="css/framework7.material.colors.min.css" />
+	
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/keypad/framework7.keypad.min.css" />
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/indexed-list/framework7.indexed-list.min.css" />
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/toast/toast.css" />
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/tour-guide/tour-guide.css" />
+	<link rel="stylesheet" href="media/vendor/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="media/vendor/hamburgers/hamburgers.min.css" />
+	<link rel="stylesheet" href="media/vendor/material-icons/material-icons.css" />
+	<link rel="stylesheet" href="media/vendor/pattern-lock/patternLock.css" />
+	<link rel="stylesheet" href="media/vendor/rateyo/jquery.rateyo.min.css" />
+	<link rel="stylesheet" href="media/vendor/tooltipster/css/tooltipster.bundle.min.css" />
+	<link rel="stylesheet" href="media/vendor/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css" />
+
+	<link rel="stylesheet" href="media/vendor/nectar/nectar.css" />
+
+	<link rel="stylesheet" href="media/custom/css/components.css" />
+	<link rel="stylesheet" href="media/custom/css/pages.css" />
+	
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body>
+  <script type="text/javascript">
+  var app;
+  var db;
+  var jsonp;  
+  var push;
+  var ns;
+  var lang;
+  var myApp;
+  var $$;
+  var mainView;
+  var OSID;
+  var DEVICEID;
+  var LG="in";
+  var PAGEOPEN="main";
+  var PAGEOPENBEFORE="";
+  var SUBPAGEOPEN="";
+  var ARRPAGE=['main','login','signup','thankyou','home','forgotpassword','resetpassword','menulayanan','mintalayanan','agen_waiting','proses','map','history','profil','setting','mintalayanan2','front','shbc','lokasiuser','datamotor','manualorder','manuallog'];
+  var ARRPAGECSS={'main':'MainPage','login':'LoginPage','signup':'SignupPage','thankyou':'ThankyouPage','home':'HomePage','forgotpassword':'ForgotPage','resetpassword':'ResetPage','menulayanan':'MenuPage','mintalayanan':'MintaPage','agen_waiting':'AgenWaitingPage','proses':'ProsesPage','map':'MapPage','history':'HistoryPage','profil':'ProfilPage','setting':'SettingPage','mintalayanan2':'MintaPage2','front':'FrontPage','shbc':'ShbcPage','lokasiuser':'LokasiuserPage','datamotor':'DatamotorPage','manualorder':'ManualorderPage','manuallog':'ManuallogPage'};
+  var WDOGTIME= 1000 * 60 * 2;//menit
+  var WDOGHANDLE=1;
+  var TIMERHANDLE=2;
+  var TMDETIK=0;
+  var TMMENIT=0;
+  var CALLTIME=30;//detik
+  var GPSSTATUS=false;
+  var TIPE_KEANGGOTAAN=null;
+  var CURPOSITION={latitude:0,longitude:0};
+  var SCANCOVERMIN=5;
+  var SCANCOVER=SCANCOVERMIN;
+  var SCANSTEP=10;
+  var SCANCOVERLIMIT=25;
+  var ARRAGEN=[];
+  var STATUSAGEN=false;
+  var ORDERID='none';
+  var PERSENLOADING=0;
+  var WAKEUPHANDLE=3;
+  var KELUHAN="";
+  var NOPOLISI="";
+  var LOOKUPHANDLE=4;
+  var DATAAGEN='';
+  var INTERNALDATA={register:'',keanggotaan:'',akun:''};
+  var PROSESHANDLE=5;
+  //var IMGSERVER="https://hondacare.mjsgroups.com/";
+  //var IMGSERVER="https://dealerhondabali.com/hondacare_apk/";
+  var IMGSERVER="https://dealerhondabali.com/";
+  var SETTINGS={};
+  var DATAUSER={};
+  var STATISTIK={};
+  var PROSTATUS='';
+  var PHONENUMBER='';
+  var APPBROWSER;
+  var IMGOBJ;
+  var DATASP="";
+  var AGENMONITORHANDLE=6;
+  var WAKTUAGEN="";
+  var MONITORPOSITION="";
+  var ARRAYORDERID=[];
+  var HISTORY_CHART1;
+  var DATEAWAL="";
+  var DATEAKHIR="";
+  var CURORDERID;
+  var DAFTARINVOICE="no";
+  var polyline={};
+  var IDBARCODE="";
+  var AGENHANDLE="self";  
+  //var RUNURI=cordova.file.externalRootDirectory;
+  var RUNURI;
+  
+  
+  
+  
+  </script>
+   <!--
+  <div class="popup popup-tambahdata-kendaraan">
+    <div class="content-block" style="text-align:center"> 
+     <p style="text-align:center;font-weight:bold">Tambah Data Kendaraan</p> 
+    <p>
+				<div class="list-block">
+					<ul>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_platno" id="plus_platno" placeholder="Nomor Polisi(DK1212KAB) *" required />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_nomesin" id="plus_nomesin" placeholder="Nomor Mesin"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_warna" id="plus_warna" placeholder="Warna Motor (Hitam/Abu-abu/Merah dll)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_tipe" id="plus_tipe" placeholder="Tipe Motor(Matic/Cub/Sport)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_model" id="plus_model" placeholder="Model Motor(Vario/Beat/New Blade dll)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+	 </p>	 
+	 
+	 <p><a href="#" class="button button-fill color-green" id="btn_plus_simpan"> Simpan </a></p>
+     <p><a href="#" class="close-popup button button-fill"> Kembali </a></p>
+      
+    </div>
+  </div>
+  -->
+  
+  <div class="popup popup-barcode">
+    <div class="content-block" style="text-align:center">      
+      <p><a href="#" class="close-popup button button-fill"> Kembali </a></p>
+      <p style="text-align:center"><img id="idbarcode" src="" style="max-width:100%;text-align:center"/></p> 
+    </div>
+  </div>
+  
+  <div class="popup popup-servis">
+    <div class="content-block">
+      <p>Temukan Nama Ahass Anda</p>
+      <p><a href="#" class="close-popup button button-fill"> Kembali </a></p>
+       <div class="list-block navigator">
+        <ul>                 
+        </ul>
+      </div>
+	   <div class="list-block content">
+        <ul>                 
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+   <div class="popup popup-wilayah">
+    <div class="content-block">
+      <p>Tentukan Tempat Domisili Anda</p>
+      <p><a href="#" class="close-popup button button-fill"> Kembali </a></p>
+       <div class="list-block navigator">
+        <ul>                 
+        </ul>
+      </div>
+	   <div class="list-block content">
+        <ul>                 
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="popup popup-mekanik">
+    <div class="content-block">
+      <p>Mohon Pilih Mekanik Yang akan berangkat</p>
+      <p><a href="#" class="close-popup button button-fill"> Kembali </a></p>
+       <div class="list-block navigator">
+        <ul>                 
+        </ul>
+      </div>
+	   
+    </div>
+  </div>
+  <div class="popup popup-pengajuan-klaim">
+    <div class="content-block">
+      
+	<div class="card data-table">
+	<div class="data-table-title panel_klaim_table_title" style="padding-left:5px">Mohon Periksa Klaim yang akan diajukan:</div>
+   <hr/>
+    <div class="card-content ">
+    <table>
+      <thead class="panel_klaim_table_head">
+        <tr>
+          <th class="label-cell">Order umber</th> 
+          <th class="label-cell">Nama</th>          
+          <th class="label-cell">Tanggal</th>
+		  <th class="label-cell">Jumlah (Rp)</th>
+        </tr>
+      </thead>
+	  <tbody class="panel_klaim_table_body">
+	    <!--<tr>
+          <td class="label-cell"><span class="button button-small button-fill color-red">Pending<span></td>
+          <td class="label-cell">Jhon Smooth</td>          
+          <td class="label-cell">12 Feb 2018</td>
+		  <td class="label-cell">14:80:23</td>
+        </tr>-->
+	  </tbody>
+   </table>
+	</div>
+    </div>
+	<input type="hidden" name="panel_totalklaim" id="panel_totalklaim" >
+	<input type="hidden" name="panel_ids" id="panel_ids" >
+	<p><a href="#" class="button button-fill color-green" id="btn_panel_pengajuan_klaim"> Ajukan Permohonan Sekarang </a></p>
+    <p><a href="#" class="close-popup button button-fill color-red"> Batal </a></p> 
+    </div>
+  </div>
+  
+  <div class="popup popup-konfirmasi-klaim">
+    <div class="content-block">
+      
+	<div class="card data-table">
+	<div class="data-table-title panel_konfirm_table_title" style="padding-left:5px">Mohon Konfirmasi Klaim yang telah di bayar:</div>
+   <hr/>
+    <div class="card-content ">
+    <table>
+      <thead class="panel_konfirm_table_head">
+        <tr>
+		  <th class="label-cell">Aksi</th>
+          <th class="label-cell">Nomor</th> 
+          <th class="label-cell">Nama</th>          
+          <th class="label-cell">Tanggal</th>
+		  <th class="label-cell">Pengajuan (Rp)</th>
+		  <th class="label-cell">Dibayar (Rp)</th>
+		  <th class="label-cell">Sisa (Rp)</th>
+        </tr>
+      </thead>
+	  <tbody class="panel_konfirm_table_body">
+	    <!--<tr>
+          <td class="label-cell"><span class="button button-small button-fill color-red">Pending<span></td>
+          <td class="label-cell">Jhon Smooth</td>          
+          <td class="label-cell">12 Feb 2018</td>
+		  <td class="label-cell">14:80:23</td>
+        </tr>-->
+	  </tbody>
+   </table>
+	</div>
+    </div>		
+    <p><a href="#" class="close-popup button button-fill color-red"> Batal </a></p> 
+    </div>
+  </div>
+  
+  
+  
+  <div class="popup popup-upload">
+    <div class="content-block">
+      <p style="text-align:center">Upload Photo </p>
+      
+      <div class="content">
+			
+			<!--<div id="image_preview" style="text-align:center"><img src="img/userdummy.jpg" id="previewing" style="width:120px;max-width:120px" /></div>
+			<input type="file" id="file" name="file" />
+			<p><a href="#" class="button button-fill" id="panel_upload_open"> Buka Gallery </a></p>
+			<p><a href="#" class="button button-fill" id="panel_upload_submit"> Upload </a></p>
+			<p><a href="#" class="close-popup button button-fill color-red" > Batal </a></p>
+			-->
+			<div style="text-align:center" class="panel_new_version">
+			<form action="https://dealerhondabali.com/integrasi/ajax_php_file.php" method="post" enctype="multipart/form-data" id="avatar">
+			<div id="image_preview"><img src="img/userdummy.jpg" id="previewing" /></div>
+			<div id="message"></div>
+			<p><input type="file" id="file" name="file"></p>
+			<input type="hidden" name="up_username" id="up_username" />
+			<input type="hidden" name="up_password" id="up_password" />
+			<p><input type="submit" value="Upload" class="button button-fill" id="panel_upload_submit"></p>
+			<p><a href="#" class="close-popup button button-fill color-red" > Kembali </a></p>
+			</form>
+    
+			<div class="progress">
+			<div class="bar" style="background-color:green;height:10px;width:0px"></div >
+			<div class="percent"></div >
+			</div> 
+			<div id="status"></div >
+            </div>
+			
+			<div style="text-align:center" class="panel_old_version">
+			<div class="panel_open">
+			<div id="image_preview2"><img src="img/userdummy.jpg" id="previewing2" /></div>
+			<p><a href="#" class="button button-fill" id="panel_upload_open"> Open Directory </a></p>
+			<form id="avatar2" method="post" >            
+		      <input type="submit" class="button button-fill color-green" id="panel_upload_submit2" name="panel_upload_submit2" value="Upload" /> <!-- Submit -->
+            </form>
+			<p><a href="#" class="close-popup button button-fill color-red" > Kembali </a></p>
+			</div>
+			<div class="panel_directory">			
+			<p><a href="#" class="button button-fill color-green" id="panel_upload_kembali"> Kembali </a></p>
+			<p class="isi"></p>
+			
+			</div>
+			<div id="status2">...</div >
+			</div>
+	  
+	  </div>
+	   
+    </div>
+  </div>
+  
+   <div class="popup popup-sms">
+    <div class="content-block">
+      <p>Mohon Ketik Pesan Anda di bawah ini</p>
+      <p><a href="#" class="close-popup button button-fill"> Kembali </a></p>
+      <p>
+	  <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title label">Pesan (maksimum 80 karakter)</div>
+          <div class="item-input">
+              <textarea id="panel_txtsms" maxLength="80" style="width:100%"></textarea>
+          </div>
+        </div>
+      </div>
+	  </p>
+	  <p>
+	  <div class="row">
+	  <div class="col-50"><a href="#" class="close-popup button button-fill color-red"> Batal </a></div>
+	  <div class="col-50"><a href="#" class="button button-fill color-green" id="panel_btnkirim"> Kirim </a></div>
+	  </div>
+	  </p>
+	   
+    </div>
+  </div>
+  
+  
+  <div class="popup popup-keluhan">
+    <div class="content-block">
+      <p>Ketik Keluhan Anda dibawah ini, maksimum 80 karakter diperbolehkan</p>      
+       <div class="list-block navigator">
+        <ul>
+       
+		<li>
+		<div class="item-content">        
+        <div class="item-inner">
+          <div class="item-title label ">Keluhan</div>
+          <div class="item-input">
+            <textarea name="keluhan" id="keluhan" placeholder="Keluhan Kendaraan Anda" maxlength="80"></textarea>
+          </div>
+        </div>
+       </div>
+	  </li>
+		<li>
+		<div class="item-content">
+        <div class="item-inner">
+          <div class="item-title label">No Polisi</div>
+          <div class="item-input">
+            <input type="text" name="nopolisi" id="nopolisi" placeholder="Plat Motor Anda" maxlength="20">
+          </div>
+        </div>
+        </div>
+		</li>		
+        </ul>
+      </div>
+	  <p><a href="#" class="button button-fill color-green" id="btnkirimkeluhan"> Kirim Keluhan dan Tunggu Respon </a></p>
+	  <p><a href="#" class="button button-fill color-red" id="btnclosekeluhan"> Kembali </a></p>
+	  <p><a href="#" class="button button-fill color-orange" id="btnbicarakeluhan"> Bicara </a></p>
+	   
+    </div>
+  </div>
+  
+  <div class="popup popup-agen-live">
+    <div class="content-block">
+	<p class="content">
+	 <div class="item-content">        
+        <div class="item-inner">
+          <div class="item-title label">Alasan</div>
+          <div class="item-input">
+            <textarea name="alasan" id="alasan" placeholder="Alasan kenapa Layanan mau dihentikan" maxlength="100" style="width:100%;height:100px" ></textarea>
+          </div>
+        </div>
+     </div>
+	</p>
+	<p><a href="#" class="button button-fill color-green" id="btnagenoff"> Permintaan Penutupan </a></p>
+	<p><a href="#" class="close-popup button button-fill color-red" > Batal </a></p>
+	</div>
+   </div>
+ 
+ <div class="popup popup-order-detail">
+    <div class="content-block">
+	<div class="card-content ">
+    <table>
+      <thead class="popup-order-detail-head">
+       
+      </thead>
+	  <tbody class="popup-order-detail-body">
+	    <!--<tr>
+          <td class="label-cell"><span class="button button-small button-fill color-red">Pending<span></td>
+          <td class="label-cell">Jhon Smooth</td>          
+          <td class="label-cell">12 Feb 2018</td>
+		  <td class="label-cell">14:80:23</td>
+        </tr>-->
+	  </tbody>
+   </table>
+	</div>
+	<p><a href="#" class="button button-fill color-red" id="btn-order-detail" > Kembali </a></p>
+	</div>
+ </div>
+ 
+ <div class="popup popup-order-sparepart">
+    <div class="content-block">
+	<h2>Masukan keterangan Spare Part Jika anda melakukan Penggantian!</h2>
+	<div class="card-content ">
+    <table style="width:100%">
+      <thead class="popup-order-sparepart-head">
+	  <tr>
+          <th class="label-cell" colspan="4"><a href="#" class="button button-fill color-primary button-small" onClick="app.tambahSP()">+ Tambah</a></th>			
+        </tr>
+        <tr style="border-bottom:2px solid silver">
+          <th class="label-cell">Nama</th>
+			<th class="label-cell"></th> 		  
+          <th class="label-cell">Harga</th>
+		  <th class="label-cell"></th> 
+        </tr>
+		
+      </thead>
+	  <tbody class="popup-order-sparepart-body">
+	   
+	  </tbody>
+   </table>
+	</div>
+	<p><a href="#" class="button button-fill color-green" id="btn-order-sparepart-ganti" onClick="app.gantiSP('ok')" > Ajukan Permintaan Pekerjaan Selesai </a></p>
+	
+	</div>
+ </div>
+   
+  
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block panel_profile">
+        <p style="text-align:left">
+		<img src="img/userdummy.jpg" lowsrc="img/lowsrc.gif" id="panel_img" style="width:90%;max-width:90%;border:2px solid silver">				
+		</p>
+		<p><a href="#" class="button button-fill color-green" id="panel_photo">Ganti Photo</a></p>
+		<p style="text-align:left">
+		Nama : <i id="panel_name"></i>
+		<br>
+		Keanggotaan : <i id="panel_membertype"></i>
+		<br>
+		Mobile : <i id="panel_mobile"></i>
+		</p>
+		
+		<!--<p><a href="#" class="button button-fill color-green" id='panel_status'>Status:ON</a></p>
+		<p><a href="#" class="button button-fill color-teal" id='panel_profil'><i class="material-icons">
+person</i> Ubah Profil</a></p>
+<p><a href="#" class="button button-fill color-teal" id='panel_setting'><i class="material-icons">settings</i> Pengaturan</a></p>-->
+
+		
+		<div class="list-block">
+		<ul>
+			<li>
+			<a href="#" class="item-link list-button" id='panel_status' onClick="app.setAgenStatus()">Status:ON</a>
+			</li>
+			<li>
+			<a href="#" class="item-link list-button" id='panel_profil'><i class="material-icons">
+person</i> Ubah Profil</a>
+			</li>
+			<li>
+			<a href="#" class="item-link list-button" id='panel_setting'><i class="material-icons">settings</i> Pengaturan</a>
+			</li>
+			<li>
+			<a href="#" class="item-link list-button" id='panel_refresh'><i class="material-icons">autorenew</i> Refresh</a>
+			</li>
+			
+		</ul>
+		</div>      
+		
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar theme-red color-white">         		
+         <div class="navbar-inner">
+			<div class="left">
+            <a href="#" data-panel="left" class="link open-panel" style="font-size:10px"><i class="material-icons">
+toc</i>Profile</a>
+			</div>
+			<div class="center">Honda Care</div>
+			<div class="right">
+            <a href="#" class="link"></a>
+			</div>
+		</div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages ">
+          <!-- Page, data-page contains page name-->
+          <div data-page="main" class="page no-navbar MainPage" style="background-color:#fd0909">
+		 
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div style="padding-top:40% !important;text-align:center">
+			  <img src="img/logoanim.gif" style="max-width:200px !important">
+			  </div>
+			 <!-- <a href="#" onClick="alert('lucu...')" class="button button-big button-fill color-red">MOVE</a>-->
+			  <div id="index_status" style="text-align:center;color:#fff;font-size:smaller"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom Toolbar
+        <div class="toolbar">
+          <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
+        </div>
+		-->
+      </div>
+    </div>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="lang/lang.js"></script>
+	<script type="text/javascript" src="js/framework7.min.js"></script>	
+    
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.form.js"></script>
+	<script type="text/javascript" src="js/jquery-md5.js"></script>
+	<script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/polyline.js"></script>
+    <!-- Path to your app js-->
+	
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/global_push.js"></script>
+	<script type="text/javascript" src="js/native-store.js"></script>
+	<script type="text/javascript" src="js/jsonp-class.js"></script>
+	
+    <script type="text/javascript" src="js/my-app.js"></script>
+	
+	
+	<!-- themeforest -->
+	
+	
+  </body>
+</html>

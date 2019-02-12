@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Honda Care</title>
+    <!-- Path to Framework7 Library CSS-->
+   <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+	
+	 <!-- 
+	<link rel="stylesheet" href="media/vendor/framework7/css/framework7.material.min.css" />
+	<link rel="stylesheet" href="media/vendor/framework7/css/framework7.material.colors.min.css" />-->
+	<!--
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/keypad/framework7.keypad.min.css" />
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/indexed-list/framework7.indexed-list.min.css" />
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/toast/toast.css" />
+	<link rel="stylesheet" href="media/vendor/framework7-plugins/tour-guide/tour-guide.css" />
+	<link rel="stylesheet" href="media/vendor/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="media/vendor/hamburgers/hamburgers.min.css" />
+	<link rel="stylesheet" href="media/vendor/material-icons/material-icons.css" />
+	<link rel="stylesheet" href="media/vendor/pattern-lock/patternLock.css" />
+	<link rel="stylesheet" href="media/vendor/rateyo/jquery.rateyo.min.css" />
+	<link rel="stylesheet" href="media/vendor/tooltipster/css/tooltipster.bundle.min.css" />
+	<link rel="stylesheet" href="media/vendor/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css" />
+
+	<link rel="stylesheet" href="media/vendor/nectar/nectar.css" />
+
+	<link rel="stylesheet" href="media/custom/css/components.css" />
+	<link rel="stylesheet" href="media/custom/css/pages.css" />
+	-->
+    <!-- Path to your custom app styles-->
+	
+    <link rel="stylesheet" href="css/my-app.css">
+	<style>
+	.ct-legend {
+    position: relative;
+    z-index: 10;
+
+    li {
+        position: relative;
+        padding-left: 23px;
+        margin-bottom: 3px;
+    }
+
+    li:before {
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        left: 0;
+        content: '';
+        border: 3px solid transparent;
+        border-radius: 2px;
+    }
+
+    li.inactive:before {
+        background: transparent;
+    }
+
+    &.ct-legend-inside {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    @for $i from 0 to length($ct-series-colors) {
+        .ct-series-#{$i}:before {
+            background-color: nth($ct-series-colors, $i + 1);
+            border-color: nth($ct-series-colors, $i + 1);
+        }
+    }
+}
+
+	</style>
+  </head>
+  <body>
+   <script type="text/javascript">
+  var app;
+  var db;
+  var jsonp;  
+  var push;
+  var ns;
+  var lang;
+  var myApp;
+  var $$;
+  var mainView;
+  var OSID;
+  var DEVICEID;
+  var LG="in";
+  var PAGEOPEN="main";
+  var PAGEOPENBEFORE="";
+  var SUBPAGEOPEN="";
+  var ARRPAGE=['main','login','signup','thankyou','home','forgotpassword','resetpassword','menulayanan','mintalayanan','agen_waiting','proses','map','history','profil','setting'];
+  var ARRPAGECSS={'main':'MainPage','login':'LoginPage','signup':'SignupPage','thankyou':'ThankyouPage','home':'HomePage','forgotpassword':'ForgotPage','resetpassword':'ResetPage','menulayanan':'MenuPage','mintalayanan':'MintaPage','agen_waiting':'AgenWaitingPage','proses':'ProsesPage','map':'MapPage','history':'HistoryPage','profil':'ProfilPage','setting':'SettingPage'};
+  var WDOGTIME= 1000 * 60 * 2;//menit
+  var WDOGHANDLE=1;
+  var TIMERHANDLE=2;
+  var TMDETIK=0;
+  var TMMENIT=0;
+  var CALLTIME=30;//detik
+  var GPSSTATUS=false;
+  var TIPE_KEANGGOTAAN=null;
+  var CURPOSITION={latitude:0,longitude:0};
+  var SCANCOVERMIN=5;
+  var SCANCOVER=SCANCOVERMIN;
+  var SCANSTEP=10;
+  var SCANCOVERLIMIT=25;
+  var ARRAGEN=[];
+  var STATUSAGEN=false;
+  var ORDERID='none';
+  var PERSENLOADING=0;
+  var WAKEUPHANDLE=3;
+  var KELUHAN="";
+  var NOPOLISI="";
+  var LOOKUPHANDLE=4;
+  var DATAAGEN='';
+  var INTERNALDATA={register:'approve',keanggotaan:'umum',akun:'madiyasa,123123123'};
+  var PROSESHANDLE=5;
+  var IMGSERVER="https://hondacare.mjsgroups.com/";
+  var SETTINGS={};
+  var DATAUSER={};
+  var STATISTIK={};
+  var PROSTATUS='';
+  var PHONENUMBER='';
+  var APPBROWSER;
+  var IMGOBJ;
+    
+  //var RUNURI=cordova.file.externalRootDirectory;
+  var HISTORY_CHART1;
+  var DATEAWAL="";
+  var DATEAKHIR="";
+  var CURORDERID;
+  
+  var DATASP="";
+  var AGENMONITORHANDLE=6;
+  var WAKTUAGEN="wewew";
+  var MONITORPOSITION="ewewew";
+  var ARRAYORDERID=[];
+  var polyline={};
+  </script>
+ 
+  
+  <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery.form.js"></script>
+  <script type="text/javascript" src="lang/lang.js"></script>
+  <script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>-->
+   <script type="text/javascript" src="lang/lang.js"></script>
+  <div class="popup popup-servis">
+    <div class="content-block">
+      <p>Temukan Nama Ahass Anda</p>
+      <p><a href="#" class="close-popup button button-fill"> Kembali </a></p>
+       <div class="list-block navigator">
+        <ul>                 
+        </ul>
+      </div>
+	   <div class="list-block content">
+        <ul>                 
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="popup popup-order-sparepart">
+    <div class="content-block">
+	<h2>Masukan keterangan Spare Part Jika anda melakukan Penggantian!</h2>
+	<div class="card-content ">
+    <table style="width:100%">
+      <thead class="popup-order-sparepart-head">
+	  <tr>
+          <th class="label-cell" colspan="3"></th><th class="label-cell" ><a href="#" class="button button-fill color-primary button-small" onClick="app.tambahSP()">+ Tambah</a></th>			
+        </tr>
+        <tr style="border-bottom:2px solid silver">
+          <th class="label-cell">Nama</th>
+			<th class="label-cell"></th> 		  
+          <th class="label-cell">Harga</th>
+		  <th class="label-cell"></th> 
+        </tr>
+		
+      </thead>
+	  <tbody class="popup-order-sparepart-body">
+	   
+	  </tbody>
+   </table>
+	</div>
+	<p><a href="#" class="close-popup button button-fill color-green" id="btn-order-sparepart-ganti" onClick="app.gantiSP('ok')" > Selesai, dengan penggantian Spare Part </a></p>
+	<p><a href="#" class="close-popup button button-fill color-red" id="btn-order-sparepart-tidak" onClick="app.gantiSP('no')"> Selesai, tanpa penggantian Spare Part </a></p>
+	</div>
+ </div>
+  
+  
+  
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block">
+        <p>Profile</p>
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <p>Right panel content goes here</p>
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left"></div>
+            <div class="center sliding">Honda Care</div>
+            <div class="right"></div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages ">
+          <!-- Page, data-page contains page name-->
+          <div data-page="main" class="page" >
+            <!-- Scrollable page content-->
+            <div class="page-content">
+			<br><br>
+			<div class="content-block home_test" id="home_test_value" style="height:20px"></div>
+				
+			
+             <a href="#" class="button button-big button-block button-fill" onClick="test()">TEST</a>
+			 <div class="list-block">
+					<ul>
+			           <li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_warna" id="plus_warna" placeholder="Warna Motor (Hitam/Abu-abu/Merah dll)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+							<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_model" id="plus_model" placeholder="Model Motor(Vario/Beat/New Blade dll)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>			
+			<!-- <div>
+			 <script>lang._text_dw('login_lupa_password')</script>
+			 </div>-->
+			 
+			 <div class="content-block" style="display:block;height:20px"></div>
+     	<!--
+			<form action="https://hondacare.mjsgroups.com/integrasi/ajax_php_file.php" method="post" enctype="multipart/form-data" id="avatar">
+			<div id="image_preview"><img src="img/userdummy.jpg" id="previewing" /></div>
+			<div id="message"></div>
+			<input type="file" id="file" name="file"><br>
+			<input type="submit" value="Upload File to Server">
+			</form>
+    
+			<div class="progress">
+			<div class="bar"></div >
+			<div class="percent">0%</div >
+			</div>    
+            <div id="status"></div>
+			 -->
+				<!--<canvas id="myChart" width="200px" height="200px"></canvas>-->
+			<div id="#timelabel"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom Toolbar
+        <div class="toolbar">
+          <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
+        </div>
+		-->
+      </div>
+    </div>
+    <!-- Path to Framework7 Library JS-->
+   <script type="text/javascript" src="js/framework7.min.js"></script>	
+   <script type="text/javascript" src="js/jquery-md5.js"></script> 
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/global_push.js"></script>
+	<script type="text/javascript" src="js/db-websql.js"></script>
+	<script type="text/javascript" src="js/jsonp-class.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/polyline.js"></script>
+    <script type="text/javascript" >
+	
+	$(function(){
+		myApp = new Framework7({
+    animateNavBackIcon: false,//true
+    // Enable templates auto precompilation
+    precompileTemplates: true,
+    // Enabled pages rendering using Template7
+	swipeBackPage: false, //false
+	swipeBackPageThreshold: 1,
+	swipePanel: "left",
+	swipePanelCloseOpposite: true,
+	pushState: true,
+	pushStateRoot: undefined,
+	pushStateNoAnimation: false,
+	pushStateSeparator: '#!/',
+    template7Pages: false
+    });
+
+// Export selectors engine
+$$ = Dom7;
+
+// Add view
+mainView = myApp.addView('.view-main', {
+    // Because we use fixed-through navbar we can enable dynamic navbar
+    dynamicNavbar: false
+});
+	
+	
+	
+	
+
+	test();
+	
+	
+	
+	//chart();
+	//jsonp.agenMonitoringCall();
+	
+	});
+	
+	function sdata()
+	{
+	/*
+	var pan=Object.keys(STATISTIK).length;
+	
+	
+	if(pan == 0)
+    {
+	jsonp.getStatistik("2018-05-01","2018-05-19",function(data){
+            if(data != 'none' || data != 'error')
+			{
+              //console.log(data);
+			  app.drawStatistik();
+			  }else
+			  {
+			  console.log('data tidak bisa diambil');
+			  }
+            
+            
+        });
+       
+    }else
+    {
+         console.log("sudah ada");
+    }    
+	  */
+	  
+	
+	}
+	
+	function prevPath(pf)
+	{
+	  var arr= pf.split('/');
+	  var newarr=[];
+	   // console.log(arr);
+		//console.log(arr.length);
+		if(arr[arr.length - 1] == "")
+		{
+			for(var i =0; i < arr.length - 2  ;i++)
+			{
+					newarr[i] = arr[i];
+			}	
+	 
+		}else
+		{
+		    for(var i =0; i < arr.length - 1  ;i++)
+			{
+					newarr[i] = arr[i];
+			}	
+		}
+		//console.log(newarr);
+		var strpath=newarr.join('/');
+		return strpath+'/';
+	}
+	
+	
+	function  chart()
+	{
+	 var ctx = $("#myChart");
+	//var nlabel=["1/5/2018","2/5/2018","3/5/2018","4/5/2018","5/5/2018"];
+	//var data1=[12, 19, 3, 5, 2, 3];
+	//var data2=[3, 2, 1, 5, 4, 1];
+	var nlabel=[];
+	var data1=[];
+	var data2=[];
+	var data3=[];
+    HISTORY_CHART1 = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: nlabel,
+        datasets: [{
+            label: '-',
+            data: data1, 
+            backgroundColor: ['rgba(20, 255, 20, 0.2)'],
+            borderColor: ['rgba(20, 255, 20,1)'],
+            borderWidth: 1,
+	    fill:true
+        },{
+            label: '-',
+            data: data2, 
+            backgroundColor: ['rgba(20, 20, 255, 0.2)'],
+            borderColor: ['rgba(20,20,255,1)'],
+            borderWidth: 1,
+	    fill:true
+        },{
+            label: '-',
+            data: data3, 
+            backgroundColor: ['rgba(255, 20, 20, 0.2)'],
+            borderColor: ['rgba(255,20,20,1)'],
+            borderWidth: 1,
+	    fill:true
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                },display: true,
+                  scaleLabel: {
+                      display: true,
+                       labelString: "nilai"
+                  }
+            }],
+			xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: "tanggal"
+                        }
+                    }],
+        }
+    }
+}); 
+	}
+	
+	function test()
+	{
+	//var map;
+	//start=-8.522808,115.268234&end=-8.4958298,115.2696172
+	//jsonp.getMapPolyline (map,'-8.4958298,115.2696172','-8.522808,115.268234');
+	 
+	 jsonp.getMotorWarna("#plus_warna");
+	 jsonp.getMotorType("#plus_model");
+	}
+	
+	
+	
+	</script>
+	
+	
+	<!-- themeforest -->
+	
+	
+  </body>
+</html>

@@ -1,0 +1,82 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div data-page="datamotor" class="page DatamotorPage">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+	
+	<div class="content-block" style="display:block;height:20px"></div>
+     
+	   <div class="content-block" style="text-align:center"> 
+     <p style="text-align:center;font-weight:bold" id="datamotor_title">Data Kendaraan</p> 
+     <p>
+				<div class="list-block">
+					<ul>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_platno" id="plus_platno" placeholder="Nomor Polisi(DK1212KAB) *" required />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_nomesin" id="plus_nomesin" placeholder="Nomor Mesin"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_warna" id="plus_warna" placeholder="Warna Motor (Black/Red/White dll)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_tipe" id="plus_tipe" placeholder="Tipe Motor(Matic/Cub/Sport)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+						<li >
+							<div class="item-content">							
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" name="plus_model" id="plus_model" placeholder="Model Motor(Vario/Beat/New Blade dll)"  />
+									</div>
+									<div class="item-text input-error"></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+	 </p>	 
+	 <input type="hidden" name="tabel" id="tabel"   />
+	 <input type="hidden" name="koneksi" id="koneksi"   />
+	  <input type="hidden" name="platid" id="platid"   />
+	 <p><a href="#" class="button button-fill color-green" id="btn_plus_simpan"> Simpan </a></p>
+     
+      
+    </div>
+	  
+	  
+    </div>
+  </div>
+</div>

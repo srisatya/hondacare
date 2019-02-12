@@ -1,0 +1,84 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+  <div data-page="lokasiuser" class="page LokasiuserPage">
+    <!-- Scrollable page content-->
+    <div class="page-content">
+	
+	<div class="content-block" style="display:block;height:20px"></div>
+     
+	  <h1>Lokasi Kejadian</h1>
+	  <p class="pesan" id="lok_alamat" style="padding-left:5px;padding-left:5px"></p>
+    
+	  <div class="list-block">
+			<ul>
+				<li>
+					<div class="item-content">
+					<div class="item-media"><img src="img/hapus.png" id="clear_text_alamat"></div>
+						<div class="item-inner">						
+							<div class="item-input">
+								<input type="text" name="info_alamat" id="info_alamat" placeholder="Cari Alamat yang Mendekati" />								
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+				<a href="#" id="btn_continue" class="button button-small button-fill button-green">Lanjutkan dengan alamat ini</a>
+				</li>
+			</ul>
+	</div>
+	
+      <div class="content-block">        
+          
+		  <div class="map_canvas" id="map_canvas5" ></div>
+          
+      </div>
+	  	
+	  <h1>Pilih Motor</h1>
+	  
+	  <div class="list-block">
+					<ul>
+					<li class="umum">
+						<div class="item-content">	
+							<div class="item-media"><img src="img/edit.png" id="btn_datamotoredit"></div>
+							<div class="item-inner">
+								<div class="item-input">
+									<select name="lok_platno" id="lok_platno">
+									<!--<option value="DK1111KaB" selected>DK1111KaB</option>
+									<option value="DK121212ks">DK121212ks</option>
+									<option value="DK2154FB">DK2154FB</option>
+-->									
+									</select>
+								</div>
+							</div>
+						</div>	
+							
+					</li>
+					</ul>
+		</div>			
+	  
+	  <div class="content-block">
+				<div class="row">
+					<div class="col-100">
+					<a href="#" id="btnlokasi_tambahdata" class="button button-big button-fill color-orange">Tambah Data Motor</a>
+					</div>
+					
+				</div>
+		</div>
+	  
+	   <div class="content-block">
+				<div class="row">
+					<div class="col-100">
+					<a href="#" id="btnlokasi_next" class="button button-big button-fill color-green">Lanjutkan</a>
+					</div>
+					
+				</div>
+		</div>
+	  
+	  
+    </div>
+  </div>
+</div>

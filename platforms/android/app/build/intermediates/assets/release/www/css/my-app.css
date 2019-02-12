@@ -1,0 +1,161 @@
+.map_canvas
+{
+border:1px solid silver;
+width:100%;
+height:250px;
+	
+}
+
+.HomePage .page-content div row .gap
+{
+	height:15px;
+}
+
+
+.HomePage .page-content .ahass  .row .col-50
+{
+height:200px;text-align:center;
+padding-top: 20%;font-size:25px;
+ 
+}
+
+.HomePage .page-content .freelance  .row .done,.HomePage .page-content .freelance  .row .cancel
+{
+height:50px;
+text-align:center;
+font-size:14px;
+padding-top:2px; 
+}
+
+.HomePage .page-content .freelance  .row .col-50
+{
+	text-align:center;
+}
+
+.HomePage .page-content div  .row .done
+{
+color:white;background-color:#70ad47;
+	
+}
+
+.HomePage .page-content div  .row .cancel
+{
+color:white;background-color:#a9d18e;		
+}
+
+.MintaPage #timelabel,.AgenWaitingPage #timelabel2,.MintaPage2 #timelabel3
+{
+    position:absolute;
+	display:block;	
+	font-size:30px;
+	z-index:1000;
+	color:white;
+	font-weight:bold;
+	top:50%;
+	width:100%;
+	text-align:center;
+	color: white;
+    text-shadow: 2px 2px 1px #000000;
+}
+.HomePage .page-content div.row .gap
+{
+	height:15px;
+}
+
+.FrontPage .page-content
+{
+	padding:5px 5px 5px 5px !important;
+}
+
+
+
+.FrontPage div .row .col-100
+{
+	text-align:left;
+	padding-left:10px;
+	
+	
+}
+.FrontPage div .row .banner
+{
+	border-radius:10px;
+	padding-top:30%;
+	color:black;
+	font-weight:bold;
+	min-height:220px;
+	/*background-color:#d60d0d;*/
+    background: url(../img/shbc.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;	
+}
+.FrontPage div .row .banner div img
+{
+	max-width:40%;
+}
+.FrontPage .page-content div.row .gap
+{
+	height:15px;
+}
+
+
+.FrontPage div .row .col-50
+{
+	text-align:center;
+	
+}
+
+.FrontPage div .row .sub2
+{
+	border-radius:10px;
+	background-color:#d60d0d;
+}
+
+.FrontPage div .row .col-25
+{
+	text-align:center;
+	
+}
+
+
+.ShbcPage .page-content
+{
+	padding:5px 5px 5px 5px !important;
+}
+
+
+
+.ShbcPage div .row .col-100
+{
+	text-align:left;
+	padding-left:10px;
+	
+	
+}
+.ShbcPage div .row .banner
+{
+	border-radius:10px;
+	padding-top:30%;
+	color:black;
+	font-weight:bold;
+	min-height:220px;
+	/*background-color:#d60d0d;*/
+    background: url(../img/shbc.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;	
+}
+.ShbcPage div .row .banner div img
+{
+	max-width:40%;
+}
+.ShbcPage .page-content div.row .gap
+{
+	height:15px;
+}
+
+.ShbcPage div .row .col-25
+{
+	text-align:center;
+	
+}
+
+

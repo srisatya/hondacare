@@ -1,0 +1,57 @@
+{
+  "_from": "cordova-plugin-screen-locker",
+  "_id": "cordova-plugin-screen-locker@0.2.2",
+  "_inBundle": false,
+  "_integrity": "sha1-s44/kLq4ID3OegheA9wuAvdR2mQ=",
+  "_location": "/cordova-plugin-screen-locker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-screen-locker",
+    "name": "cordova-plugin-screen-locker",
+    "escapedName": "cordova-plugin-screen-locker",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-screen-locker/-/cordova-plugin-screen-locker-0.2.2.tgz",
+  "_shasum": "b38e3f90bab8203dce7a085e03dc2e02f751da64",
+  "_spec": "cordova-plugin-screen-locker",
+  "_where": "C:\\xampp\\htdocs\\hondacare2",
+  "bugs": {
+    "url": "https://github.com/pengkobe/cordova-plugin-screen-locker/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-screen-locker",
+    "platforms": [
+      "android"
+    ]
+  },
+  "cordova_name": "ScreenLocker",
+  "deprecated": false,
+  "description": "Plugin allows lock and unlock device screen by calling plugin",
+  "engines": [],
+  "englishdoc": "",
+  "homepage": "https://github.com/pengkobe/cordova-plugin-screen-locker#readme",
+  "keywords": [
+    "cordova",
+    "device",
+    "lock",
+    "unlock",
+    "screen",
+    "android"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-screen-locker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pengkobe/cordova-plugin-screen-locker.git"
+  },
+  "version": "0.2.2"
+}

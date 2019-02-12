@@ -1,0 +1,96 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-android-play-services-gradle-release": {
+      "PLAY_SERVICES_VERSION": "15.+",
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "AIzaSyB_VgUp3ljtQKOx5fgkRAcMWsitmVHwMjw",
+      "PLAY_SERVICES_VERSION": "11.8.+",
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova.custom.plugins.exitapp": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-android-gpsdetect": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-call-number": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-core-android-extensions": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-insomnia": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-native-ringtones": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-qrcodejs": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-screen-locker": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-x-toast": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-sms-plugin": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "io.gvox.plugin.phonecalltrap": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-speechrecognition": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.semetonhondabali.hondacare"
+    }
+  },
+  "dependent_plugins": {}
+}

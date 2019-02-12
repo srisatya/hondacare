@@ -1,0 +1,85 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+
+<div class="pages theme-red">
+  <!-- Page, data-page contains page name-->
+  <div data-page="history" class="page HistoryPage">
+  <a href="javascript:void(0)"  class="floating-button color-red btn_speak">
+				<img src="img/mic.png" style="max-height:30px"/>
+     </a>
+    <!-- Scrollable page content-->
+    <div class="page-content">
+	<div class="content-block" style="display:block;height:35px"></div>
+	
+	<div class="umum"></div>
+	<div class="freelance"></div>
+	<div class="ahass"></div>
+     <div class="content-block">
+	 <canvas id="myChart" style="height:400px;width:100%"></canvas>
+	 </div> 
+	 <div class="content-block">
+		<div class="row">
+			<div class="col-50">Awal :</div>
+			<div class="col-50">Akhir :</div>
+		</div>
+		<div class="row">
+			<div class="col-50"><input type="date" id="myDateAwal" value="2018-05-01"></div>
+			<div class="col-50"><input type="date" id="myDateAkhir" value="2018-05-17"></div>
+		</div>
+	 </div>
+	 
+	<div class="content-block">
+		<div class="row">
+		<div class="col-50"><a href="#" class="button button-big button-fill color-red" id="btn_history_layanan">Layanan</a></div>
+		<div class="col-50"><a href="#" class="button button-big button-fill color-teal" id="btn_history_panggilan">Panggilan</a></div>
+		</div>
+		<br>
+		<div class="row">
+		<div class="col-100"><a href="#" class="button button-big button-fill color-blue" id="btn_refresh_invoice">Refresh Invoice</a></div>		
+		</div>
+		<br>
+		<div class="row">
+		<div class="col-100"><a href="#" class="button button-big button-fill color-green" id="btn_pengajuan_klaim">Pengajuan Klaim</a></div>		
+		</div>
+		<br>
+		<div class="row">
+		<div class="col-100"><a href="#" class="button button-big button-fill color-orange" id="btn_klaim_confirm">Konfirmasi klaim</a></div>		
+		</div>
+		
+	</div>
+	<!--<div class="card data-table data-table-collapsible data-table-init">-->
+	<div class="card data-table">
+	<div class="data-table-title history-description" style="padding-left:5px">Layanan</div>
+   
+    <div class="card-content ">
+    <table>
+      <thead class="history_table_head">
+       <!-- <tr>
+          <th class="label-cell">Status</th> 
+          <th class="label-cell">Nama</th>          
+          <th class="label-cell">Tanggal</th>
+		  <th class="label-cell">Jam</th>
+        </tr>-->
+      </thead>
+	  <tbody class="history_table_body">
+	    <!--<tr>
+          <td class="label-cell"><span class="button button-small button-fill color-red">Pending<span></td>
+          <td class="label-cell">Jhon Smooth</td>          
+          <td class="label-cell">12 Feb 2018</td>
+		  <td class="label-cell">14:80:23</td>
+        </tr>-->
+	
+		
+	  </tbody>
+   </table>
+   
+	</div>
+	
+	
+
+    </div>
+	
+  </div>
+</div>
+</div>

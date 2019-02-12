@@ -1,0 +1,56 @@
+{
+  "_from": "cordova-plugin-core-android-extensions",
+  "_id": "cordova-plugin-core-android-extensions@1.2.0",
+  "_inBundle": false,
+  "_integrity": "sha1-aKov6CdbuzqbOtuf56ck3XtVjSo=",
+  "_location": "/cordova-plugin-core-android-extensions",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-core-android-extensions",
+    "name": "cordova-plugin-core-android-extensions",
+    "escapedName": "cordova-plugin-core-android-extensions",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-core-android-extensions/-/cordova-plugin-core-android-extensions-1.2.0.tgz",
+  "_shasum": "68aa2fe8275bbb3a9b3adb9fe7a724dd7b558d2a",
+  "_spec": "cordova-plugin-core-android-extensions",
+  "_where": "C:\\xampp\\htdocs\\hondacare2",
+  "author": {
+    "name": "Maksim Chemerisuk"
+  },
+  "bugs": {
+    "url": "https://github.com/chemerisuk/cordova-plugin-core-android-extensions/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-core-android-extensions",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Useful methods for an android cordova app",
+  "homepage": "https://github.com/chemerisuk/cordova-plugin-core-android-extensions#readme",
+  "keywords": [
+    "cordova",
+    "google-play-services",
+    "geolocation",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-core-android-extensions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemerisuk/cordova-plugin-core-android-extensions.git"
+  },
+  "version": "1.2.0"
+}
